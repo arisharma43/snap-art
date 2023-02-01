@@ -1,13 +1,12 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: 0,
-  status: 'idle',
+  status: "idle",
 };
 
-
 export const appSlice = createSlice({
-  name: 'app',
+  name: "app",
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
@@ -18,7 +17,7 @@ export const appSlice = createSlice({
   },
 });
 
-export const {incrementByAmount } = appSlice.actions;
+export const { incrementByAmount } = appSlice.actions;
 
 export const selectApp = (state) => state.counter.value;
 

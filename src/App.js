@@ -1,22 +1,19 @@
 import React from "react";
-import { Router, Route, Routes } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import WebCamCapture from "./WebCamCapture";
+import Preview from "./Preview";
 
 function App() {
   return (
-    <div className="App">
-      <WebCamCapture />
+    <div className="app">
+      {/* <WebCamCapture /> */}
       <Router>
-        <div className="app_body">
-          <Routes>
-            <Route exact path="/test">
-              <h1>Testing!?!?!</h1>
-            </Route>
-            <Route exact path="/">
-              <WebCamCapture />
-            </Route>
-          </Routes>
+        <div className="app-body">
+          <Switch>
+            <Route path="/" element={<WebCamCapture />} />
+            <Route path="preview" element={<Preview />} />
+          </Switch>
         </div>
       </Router>
     </div>
