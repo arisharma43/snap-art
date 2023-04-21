@@ -14,6 +14,7 @@ import FilterIcon from "@mui/icons-material/Filter";
 import { v4 as uuid } from "uuid";
 import { db, storage } from "./firebase";
 import firebase from "firebase";
+import * as tf from "@tensorflow/tfjs";
 
 function Preview() {
 	const cameraImage = useSelector(selectCameraImage);
@@ -34,9 +35,26 @@ function Preview() {
 		dispatch(resetCameraImage());
 	};
 
-	const applyFilter = () => {};
+	async function downloadImage(imageSrc) {
+		const image = await fetch(imageSrc);
+		const imageBlog = await image.blob();
+		const imageURL = URL.createObjectURL(imageBlog);
+
+		const link = document.createElement("a");
+		link.href = imageURL;
+		link.download = "image.jpeg";
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	}
+
+	//apply filter using gan so add tf and stuff to use
+	const applyFilter = () => {
+		return <div>Test Filter </div>;
+	};
 
 	const sendPost = () => {
+		navigate("../Chats", { replace: true });
 		const id = uuid();
 		const uploadTask = storage
 			.ref("posts/${id}")
@@ -61,7 +79,8 @@ function Preview() {
 							read: false,
 							timestamp: firebase.firestore.FieldValue.serverTimestamp(),
 						});
-						navigate("/chats", { replace: true });
+
+						console.log("Navigate should complete");
 					});
 			}
 		);
@@ -71,7 +90,11 @@ function Preview() {
 		<div className="preview">
 			<CloseIcon onClick={closePreview} className="preview_close"></CloseIcon>
 			<div className="preview_toolbarRight">
-				<DownloadIcon />
+				<DownloadIcon
+					onClick={async () => {
+						await downloadImage(`data:image/jpeg;base64${data}`);
+					}}
+				/>
 				<SendIcon onClick={sendPost} />
 				<TextFieldsIcon />
 			</div>

@@ -13,8 +13,8 @@ function App() {
 				<div className="app-body">
 					<Routes>
 						<Route path="/" element={<WebCamCapture />} />
-						<Route path="preview" element={<Preview />} />
-						<Route path="chats" element={<Chats />} />
+						<Route path="Preview" element={<Preview />} />
+						<Route path="Chats" element={<Chats />} />
 					</Routes>
 				</div>
 			</Router>
