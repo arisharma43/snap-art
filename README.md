@@ -1,6 +1,6 @@
-# Getting Started with Create React App and Redux
+# Snap-Art: A Snapchat ripoff
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+Essentially replicates many aspects of Snapchat. This project was originally created to incorporate what I learned about GANs and make a Snapchat-type application that would utilize GANs in the filter so the GANs would be able to apply the art style of famous artists such as Picasso to an image. However, I haven't been able to complete it yet given that no such architecture currently exists that can be applied to the app.
 
 ## Available Scripts
 
